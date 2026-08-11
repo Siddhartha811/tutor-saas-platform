@@ -11,7 +11,7 @@ const tenantSchema = new mongoose.Schema(
       trim: true,
       match: [/^[a-z0-9-]+$/, 'Slug must be lowercase alphanumeric with hyphens only'],
     },
-    ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     plan: { type: String, enum: ['free', 'pro'], default: 'free' },
     isActive: { type: Boolean, default: true },
   },

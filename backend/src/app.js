@@ -1,3 +1,4 @@
+const authRoutes = require('./routes/authRoutes');
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -15,6 +16,7 @@ if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
+app.use('/api/auth', authRoutes);
 
 // Feature routes get mounted here starting Day 3 (auth), Day 5 (students), etc.
 
