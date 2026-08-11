@@ -6,18 +6,6 @@ const { asyncHandler } = require('../middleware/errorHandler');
 // POST /api/auth/register — creates a new tenant workspace + its owner user
 const register = asyncHandler(async (req, res) => {
   const { workspaceName, name, email, password } = req.body;
-
-  if (!workspaceName || !name || !email || !password) {
-    const error = new Error('workspaceName, name, email, and password are required');
-    error.statusCode = 400;
-    throw error;
-  }
-  if (password.length < 8) {
-    const error = new Error('Password must be at least 8 characters');
-    error.statusCode = 400;
-    throw error;
-  }
-
   const existingUser = await User.findOne({ email: email.toLowerCase() });
   if (existingUser) {
     const error = new Error('An account with this email already exists');
@@ -63,12 +51,6 @@ const register = asyncHandler(async (req, res) => {
 // POST /api/auth/login
 const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-
-  if (!email || !password) {
-    const error = new Error('Email and password are required');
-    error.statusCode = 400;
-    throw error;
-  }
 
   const user = await User.findOne({ email: email.toLowerCase() }).select('+password');
   if (!user || !(await user.comparePassword(password))) {
