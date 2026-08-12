@@ -1,5 +1,6 @@
 const authRoutes = require('./routes/authRoutes');
 const studentRoutes = require('./routes/studentRoutes');
+const sessionRoutes = require('./routes/sessionRoutes');
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -32,6 +33,7 @@ app.get('/api/health', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/students', studentRoutes);
+app.use('/api/sessions', sessionRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
