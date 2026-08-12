@@ -1,6 +1,7 @@
 const authRoutes = require('./routes/authRoutes');
 const studentRoutes = require('./routes/studentRoutes');
 const sessionRoutes = require('./routes/sessionRoutes');
+const webhookRoutes = require('./routes/webhookRoutes');
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -13,12 +14,15 @@ const app = express();
 app.use(helmet());
 
 app.use(cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true
+  origin: process.env.CLIENT_URL,
+  credentials: true
 }));
+
+app.use('/api/webhooks', webhookRoutes);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
