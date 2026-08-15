@@ -1,0 +1,25 @@
+{
+  "info": { "name": "Tutor SaaS API", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "token", "value": "" },
+    { "key": "studentId", "value": "" },
+    { "key": "sessionId", "value": "" },
+    { "key": "paymentId", "value": "" }
+  ],
+  "item": [
+    { "name": "Health Check", "request": { "method": "GET", "url": "{{baseUrl}}/api/health" } },
+    { "name": "Register", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/api/auth/register", "body": { "mode": "raw", "raw": "{\"workspaceName\":\"Priya Tutoring\",\"name\":\"Priya Shah\",\"email\":\"priya@example.com\",\"password\":\"testpass123\"}" } } },
+    { "name": "Login", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/api/auth/login", "body": { "mode": "raw", "raw": "{\"email\":\"priya@example.com\",\"password\":\"testpass123\"}" } } },
+    { "name": "List Students", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/api/students" } },
+    { "name": "Create Student", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/api/students", "body": { "mode": "raw", "raw": "{\"name\":\"Rahul Verma\",\"guardianContact\":\"9876543210\"}" } } },
+    { "name": "Update Student", "request": { "method": "PATCH", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/api/students/{{studentId}}", "body": { "mode": "raw", "raw": "{\"phone\":\"9998887776\"}" } } },
+    { "name": "Delete Student", "request": { "method": "DELETE", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/api/students/{{studentId}}" } },
+    { "name": "Create Recurring Sessions", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/api/sessions/recurring", "body": { "mode": "raw", "raw": "{\"title\":\"Batch A - Physics\",\"students\":[\"{{studentId}}\"],\"scheduledAt\":\"2026-08-15T10:00:00.000Z\",\"weeksCount\":4}" } } },
+    { "name": "List Sessions", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/api/sessions" } },
+    { "name": "Mark Attendance", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/api/sessions/{{sessionId}}/attendance", "body": { "mode": "raw", "raw": "{\"records\":[{\"studentId\":\"{{studentId}}\",\"status\":\"present\"}]}" } } },
+    { "name": "Create Payment", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/api/payments", "body": { "mode": "raw", "raw": "{\"studentId\":\"{{studentId}}\",\"amount\":150000,\"description\":\"August fees\"}" } } },
+    { "name": "Create Checkout Session", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/api/payments/{{paymentId}}/checkout-session" } },
+    { "name": "List Payments", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }], "url": "{{baseUrl}}/api/payments" } }
+  ]
+}
