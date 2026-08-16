@@ -254,9 +254,8 @@ export default function BillingPage() {
 
       </div>
 
-      <div className="mt-6 overflow-hidden rounded-lg border border-neutral-200 bg-white">
-
-        <table className="w-full text-left text-[13px]">
+      <div className="mt-6 overflow-x-auto rounded-lg border border-neutral-200 bg-white">
+  <table className="w-full min-w-[560px] text-left text-[13px]">
 
           <thead className="border-b border-neutral-200 bg-neutral-50 text-[11px] uppercase tracking-[0.08em] text-neutral-500">
 

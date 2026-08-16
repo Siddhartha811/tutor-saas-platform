@@ -37,7 +37,7 @@ export default function OverviewPage() {
   }, []);
 
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
       <StatCard label="Active students" value={stats.students} sub="Full cohort" />
       <StatCard label="Sessions" value={stats.sessionsThisWeek} sub="Upcoming & completed" />
       <StatCard label="Pending payments" value={stats.pendingPayments} sub="Awaiting collection" />
