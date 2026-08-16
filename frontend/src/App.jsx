@@ -6,6 +6,7 @@ import DashboardLayout from "./components/ui/DashboardLayout";
 import OverviewPage from './pages/OverviewPage';
 import StudentsPage from './pages/StudentsPage';
 import SessionsPage from './pages/SessionsPage';
+import BillingPage from './pages/BillingPage';
 
 const Placeholder = ({ label }) => <div className="font-body text-neutral-500">{label} — coming soon.</div>;
 
@@ -19,7 +20,7 @@ export default function App() {
             <Route index element={<OverviewPage />} />
             <Route path="students" element={<StudentsPage />} />
             <Route path="sessions" element={<SessionsPage />} />
-            <Route path="billing" element={<Placeholder label="Billing" />} />
+            <Route path="billing" element={<BillingPage />} />
             <Route path="settings" element={<Placeholder label="Settings" />} />
           </Route>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />

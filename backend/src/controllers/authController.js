@@ -69,4 +69,13 @@ const login = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = { register, login };
+// GET /api/auth/me
+const getMe = asyncHandler(async (req, res) => {
+  const tenant = await Tenant.findById(req.user.tenantId);
+  res.status(200).json({
+    success: true,
+    user: { id: req.user._id, name: req.user.name, email: req.user.email, role: req.user.role },
+    tenant: { id: tenant._id, name: tenant.name, slug: tenant.slug },
+  });
+});
+module.exports = { register, login ,getMe};
