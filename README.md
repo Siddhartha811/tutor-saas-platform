@@ -7,6 +7,20 @@ A minimalist, multi-tenant workspace for independent educators to manage student
 
 ---
 
+## 📸 Screenshots
+
+### Dashboard
+![Dashboard](docs/screenshots/dashboard.png)
+
+### Student Management
+![Student Management](docs/screenshots/students.png)
+
+### Session Scheduling
+![Session Scheduling](docs/screenshots/sessions.png)
+
+### Billing & Payments
+![Billing & Payments](docs/screenshots/billing.png)
+
 ## Features
 
 - Multi-tenant architecture — each tutor gets an isolated workspace with tenant-scoped data
