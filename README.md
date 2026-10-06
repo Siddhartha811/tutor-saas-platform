@@ -2,7 +2,7 @@
 
 A minimalist, multi-tenant workspace for independent educators to manage students, track session attendance, and manage payments.
 
-**Live Demo:** https://tutor-saas-platform-ure1bjqbg-siddhartha-projects.vercel.app  
+**Live Demo:** https://tutor-saas-platform.vercel.app 
 **API Health:** https://tutor-saas-platform.onrender.com/api/health
 
 ---
